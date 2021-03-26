@@ -1,9 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
+import sessionReducer from './session';
 
-const rootReducer = combineReducers({
-  // add reducer functions here
-});
 
 let enhancer;
 
@@ -19,5 +17,9 @@ if (process.env.NODE_ENV === "production") {
 const configureStore = (preloadedState) => {
   return createStore(rootReducer, preloadedState, enhancer);
 };
+
+const rootReducer = combineReducers({
+  session: sessionReducer,
+});
 
 export default configureStore;
