@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as sessionsActions from '../../store/session';
+import './SignupFormPage.css'
+//CSS style needs to be done
+
 
 function SignupFormPage() {
     const dispatch = useDispatch();

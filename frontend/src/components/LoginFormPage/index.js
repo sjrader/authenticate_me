@@ -3,6 +3,7 @@ import * as sessionsActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.css';
+//CSS style needs to be done
 
 function LoginFormPage() {
     const dispatch = useDispatch();
