@@ -37,21 +37,44 @@ function CreateEventForm() {
         }
         setErrors(errors)
     }, [endTime, startTime]);
-    
-  const onSubmit = e => {
-    e.preventDefault();
-    console.log({
-        title,
-        description,
-        image,
-        sport,
-        startTime,
-        endTime,
-        date,
-        venueId,
-        userId,
-    });
-//    history.push(`/venues/${venueId}`)
+
+//     const createEvent = (async(req, res) => {
+//         try {
+//       const res = await fetch(`/${venueId}/create`, {
+//         method: "POST",
+//         body: JSON.stringify(event),
+//         headers: {
+//           "Content-Type": "application/json"
+//         }})
+//     } catch (err){
+//       console.log(err);
+//   }})
+
+    const onSubmit = async(e) => {
+        e.preventDefault();
+        const event = {
+            title,
+            description,
+            image,
+            sport,
+            startTime,
+            endTime,
+            date,
+            venueId,
+            userId,
+        };
+        console.log(event)
+        try {
+      const res = await fetch(`/${venueId}/create`, {
+        method: "POST",
+        body: JSON.stringify(event),
+        headers: {
+          "Content-Type": "application/json"
+        }})
+    } catch (err){
+      console.log(err);
+  }
+//      history.push(`/venues/${venueId}`)
   };
 
     return (

@@ -3,6 +3,6 @@ const asyncHandler = require('express-async-handler');
 
 const { Event } = require('../../db/models')
 
-router.post('/venues/venueId/create', asyncHandler(async (req, res, next) => {
-    
+router.post('/:id(\\d+)/create', asyncHandler(async (req, res, next) => {
+
 }))
