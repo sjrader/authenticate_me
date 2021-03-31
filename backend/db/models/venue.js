@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER
       },
     location: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(60),
       allowNull: false
       },
     description: {
