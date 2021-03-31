@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'; 
 import { useParams } from 'react-router-dom';
+import {  useSelector } from 'react-redux';
 import './VenuePage.css';
 // May want to set up some redux shops for events, but I don't think that 
 // it will be needed for venues, since they are relatively simple
 
 const VenueDisplay = () => {
+    const sessionUser = useSelector((state) => state.session.user);
     const [venue, setVenue] = useState('')
     const { venueId } = useParams();
     const GetVenue = async() => {
@@ -14,8 +16,13 @@ const VenueDisplay = () => {
         const newVenue = await res.json();
         console.log(newVenue)
         setVenue(newVenue)
-         console.log('What is the mlb value?',`${newVenue.mlb}`)
     };
+
+    const sessionLink = <a className="linkChoice" href={`/venues/${venue.id}/create`}>Don't see an event you were looking for? Create one here!</a>
+    const signUpLink = <a className="linkChoice" href={`/signup`}>Want to create an event? Sign up for an account here!</a>
+    const linkChoice = sessionUser ? sessionLink : signUpLink
+    console.log(linkChoice)
+
 
     useEffect(() => {
         // This prevented the page from running on an infinite look, 
@@ -40,7 +47,7 @@ const VenueDisplay = () => {
     <h4>NHL: {`${venue.nhl}`}</h4>
     <h4>NCAA: {`${venue.ncaa}`}</h4>
     <h3>Events:</h3>
-    <a href={`/venues/${venue.id}/create`}>Don't see an event you were looking for? Create one here!</a>
+    {linkChoice}
     {/* Will add the upcoming events beneath this when it is finished */}
     </div>
     )

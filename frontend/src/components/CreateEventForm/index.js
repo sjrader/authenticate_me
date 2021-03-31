@@ -1,43 +1,68 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import {  useSelector } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
 import './CreateEventForm.css'
 
 function CreateEventForm() {
     const SPORTS = [
-        "",
         "NFL",
         "MLB",
         "NBA",
         "NHL",
         "NCAA"
     ];
-
+    let { venueId } = useParams();
+    venueId = parseInt(venueId)
+    const sessionUser = useSelector((state) => state.session.user);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [imageUrl, setImageUrl] = useState('');
-    const [sport, setSport] = useState('');
-    const [startTime, setStartTime] = useState(SPORTS[0]);
+    const [image, setImage] = useState();
+    const [sport, setSport] = useState(SPORTS[0]);
+    const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('')
-    const [userId, setUserId] = useState('');
+    const [userId] = useState(sessionUser.id);
     const [date, setDate] = useState('');
     // also need to add in an event date to have separate from start/end time
     //need to make changes to the database, should ask advisors before I do this though
     const [errors, setErrors] = useState([]);
+    const history = useHistory();
 
-    const { venueId } = useParams();
+    useEffect(() => {
+        const errors = [];
+        if ((startTime && endTime) && endTime <= startTime) {
+            errors.push('Invalid timeframe.')
+        };
+        if (!sessionUser) {
+            errors.push('Create an account to make an event!')
+        }
+        setErrors(errors)
+    }, [endTime, startTime]);
     
-    const onSubmit = e => {
-        e.preventDefault();
-        console.log(
-            venueId
-
-        )
-    };
+  const onSubmit = e => {
+    e.preventDefault();
+    console.log({
+        title,
+        description,
+        image,
+        sport,
+        startTime,
+        endTime,
+        date,
+        venueId,
+        userId,
+    });
+//    history.push(`/venues/${venueId}`)
+  };
 
     return (
-        <form className="event-form">
-        {/* {console.log('Testing',venueId)} */}
+        <form className="event-form" onSubmit={onSubmit}>
+        <a href={`/venues/${venueId}`}>Return to previous page</a>
         <h2>Create an Event</h2>
+            <ul className="errors">
+                {errors.map(error => (
+                    <li key={error}>{error}</li>
+        ))}
+      </ul>
             <input
                 type="text"
                 name="title"
@@ -53,12 +78,12 @@ function CreateEventForm() {
                     <select
                         value={sport}
                         onChange={(e) => setSport(e.target.value)}
-                        required
                         >
                         {SPORTS.map(sport => (
                             <option
                             key={sport}
                             value={sport}
+                            required
                             >
                             {sport}
                             </option>
@@ -83,7 +108,7 @@ function CreateEventForm() {
                         nam="startTime"
                         value={startTime}
                         onChange={(e) => setStartTime(e.target.value)}
-                        required
+                        required                    
                     >
                     </input>
                 </label>
@@ -113,13 +138,13 @@ function CreateEventForm() {
                 <input
                 type="text"
                 placeholder="Optional image URL"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
                 >
                 </input>
             </div>
             <div>
-                <button type="submit" className="submitForm">Create Event</button>
+                <button disabled={!!errors.length} type="submit" className="submitForm">Create Event</button>
             </div>
         </form>
     )
