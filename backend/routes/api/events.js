@@ -1,8 +1,15 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
+const db = require('../../db/models')
+const router = express.Router();
 
-const { Event } = require('../../db/models')
+router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+    const event = await db.Event.findByPk(req.params.id,{
+    include: { model: db.Venue }
+    });
+    return res.json(event);
+}));
 
-router.post('/:id(\\d+)/create', asyncHandler(async (req, res, next) => {
 
-}))
+
+module.exports = router;

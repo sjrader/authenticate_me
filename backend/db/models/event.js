@@ -7,20 +7,25 @@ module.exports = (sequelize, DataTypes) => {
       },
     description: {
       type: DataTypes.TEXT,
+      allowNull: false
       },
     image: {
       type: DataTypes.STRING(255)
       },
     sport: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(10),
+      allowNull: false
+      },
+    date: {
+      type: DataTypes.DATE,
       allowNull: false
       },
     startTime: {
-      type: DataTypes.DATE,
+      type: DataTypes.TIME,
       allowNull: false
       },
     endTime: {
-      type: DataTypes.DATE,
+      type: DataTypes.TIME,
       allowNull: false
       },
     venueId: {
@@ -29,8 +34,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false
-      }
+      allowNull: false}
   }, {});
   Event.associate = function(models) {
     Event.belongsTo(models.Venue, { foreignKey: 'venueId' }),

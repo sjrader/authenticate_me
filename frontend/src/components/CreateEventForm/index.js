@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import {  useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
+import { csrfFetch } from '../../store/csrf';
 import './CreateEventForm.css'
 
 function CreateEventForm() {
@@ -18,10 +19,10 @@ function CreateEventForm() {
     const [description, setDescription] = useState('');
     const [image, setImage] = useState();
     const [sport, setSport] = useState(SPORTS[0]);
+    const [date, setDate] = useState('');
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('')
     const [userId] = useState(sessionUser.id);
-    const [date, setDate] = useState('');
     // also need to add in an event date to have separate from start/end time
     //need to make changes to the database, should ask advisors before I do this though
     const [errors, setErrors] = useState([]);
@@ -38,18 +39,6 @@ function CreateEventForm() {
         setErrors(errors)
     }, [endTime, startTime]);
 
-//     const createEvent = (async(req, res) => {
-//         try {
-//       const res = await fetch(`/${venueId}/create`, {
-//         method: "POST",
-//         body: JSON.stringify(event),
-//         headers: {
-//           "Content-Type": "application/json"
-//         }})
-//     } catch (err){
-//       console.log(err);
-//   }})
-
     const onSubmit = async(e) => {
         e.preventDefault();
         const event = {
@@ -57,6 +46,7 @@ function CreateEventForm() {
             description,
             image,
             sport,
+            date,
             startTime,
             endTime,
             date,
@@ -65,7 +55,7 @@ function CreateEventForm() {
         };
         console.log(event)
         try {
-      const res = await fetch(`/${venueId}/create`, {
+      const res = await csrfFetch(`/api/venues/${venueId}/create`, {
         method: "POST",
         body: JSON.stringify(event),
         headers: {
@@ -74,7 +64,7 @@ function CreateEventForm() {
     } catch (err){
       console.log(err);
   }
-//      history.push(`/venues/${venueId}`)
+     history.push(`/venues/${venueId}`)
   };
 
     return (

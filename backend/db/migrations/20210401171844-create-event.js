@@ -23,23 +23,27 @@ module.exports = {
         type: Sequelize.STRING(10),
         allowNull: false
       },
-      startTime: {
+      date: {
         type: Sequelize.DATE,
         allowNull: false
       },
+      startTime: {
+        type: Sequelize.TIME,
+        allowNull: false
+      },
       endTime: {
-        type: Sequelize.DATE,
+        type: Sequelize.TIME,
         allowNull: false
       },
       venueId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: "Venues" }
+        references: {model: "Venues"}
       },
       userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: { model: "Users"}
+        references: { model: "Users" }
       },
       createdAt: {
         allowNull: false,

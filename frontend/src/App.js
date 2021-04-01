@@ -6,6 +6,7 @@ import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import VenueDisplay from './components/Venue';
 import CreateEventForm from './components/CreateEventForm';
+import EventDisplay from './components/Event';
 import * as sessionsActions from './store/session';
 
 function App() {
@@ -27,10 +28,13 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path='/venues/:venueId'>
-          <VenueDisplay />
+            <VenueDisplay />
           </Route>
           <Route path='/venues/:venueId/create'>
-          <CreateEventForm />
+            <CreateEventForm />
+          </Route>
+          <Route path='/events/:eventId'>
+            <EventDisplay />
           </Route>
         </Switch>
       )}
