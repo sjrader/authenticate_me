@@ -39,7 +39,7 @@ router.get('/rsvps/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const events = await db.RSVP.findAll({
         where: {
             userId: req.params.id
-        },        
+        }, include: db.Event      
     })
     return res.json(events)
 }))
