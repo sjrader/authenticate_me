@@ -7,6 +7,7 @@ import Navigation from './components/Navigation';
 import VenueDisplay from './components/Venue';
 import CreateEventForm from './components/CreateEventForm';
 import EventDisplay from './components/Event';
+import HomePage from './components/HomePage'
 import * as sessionsActions from './store/session';
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
     <Navigation isLoaded={isLoaded} />
     {isLoaded && (  
         <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
           <Route path="/login">
             <LoginFormPage /> 
           </Route>
@@ -35,6 +39,9 @@ function App() {
           </Route>
           <Route path='/events/:eventId'>
             <EventDisplay />
+          </Route>
+          <Route>
+            <h2>Nothing found here</h2>
           </Route>
         </Switch>
       )}

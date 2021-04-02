@@ -9,18 +9,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
       },
-    attending: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
-      },
-    notAttending:{
-      type: DataTypes.BOOLEAN,
-      allowNull: false
-      },
-    maybeAttending: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
-      }
+    attendStatus: {
+      type: DataTypes.STRING(15)
+    },
   }, {});
   RSVP.associate = function(models) {
     RSVP.belongsTo(models.Event, { foreignKey: 'eventId' }),

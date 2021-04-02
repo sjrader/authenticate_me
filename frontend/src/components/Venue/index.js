@@ -10,6 +10,7 @@ const VenueDisplay = () => {
     const sessionUser = useSelector((state) => state.session.user);
     const [venue, setVenue] = useState('')
     const [events, setEvents] = useState([])
+    const [eventRsvps, setEventRsvps] = useState([]);
     let { venueId } = useParams();
     venueId = parseInt(venueId)
     const GetVenue = async() => {
@@ -56,11 +57,14 @@ const VenueDisplay = () => {
         <h4>NCAA: {`${venue.ncaa}`}</h4>
         <h3>Events:</h3>
             {linkChoice}
-        {/* Will add the upcoming events beneath this when it is finished */}
         <div>
             {events.map(event => (
                 <div key={event.id}>
                 <a href={`/events/${event.id}`}>{event.title}</a>
+                    <div>
+                        <h3>{event.date}</h3>
+                        <h3>From {event.startTime} - {event.endTime}</h3>
+                    </div>
                 </div>
             ))}
         </div>

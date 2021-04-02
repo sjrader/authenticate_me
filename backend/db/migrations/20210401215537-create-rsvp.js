@@ -18,17 +18,8 @@ module.exports = {
         allowNull: false,
         references: { model: "Users" }
       },
-      attending: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
-      },
-      notAttending: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
-      },
-      maybeAttending: {
-        type: Sequelize.BOOLEAN, 
-        allowNull: false
+      attendStatus: {
+        type: Sequelize.STRING(15),
       },
       createdAt: {
         allowNull: false,

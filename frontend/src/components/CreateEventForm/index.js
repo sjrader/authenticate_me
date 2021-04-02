@@ -55,7 +55,7 @@ function CreateEventForm() {
         };
         console.log(event)
         try {
-      const res = await csrfFetch(`/api/venues/${venueId}/create`, {
+        const res = await csrfFetch(`/api/venues/${venueId}/create`, {
         method: "POST",
         body: JSON.stringify(event),
         headers: {

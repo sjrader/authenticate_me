@@ -16,7 +16,14 @@ router.post('/:id(\\d+)/create', asyncHandler(async (req, res, next) => {
 // Need to figure out a route here to get the events onto the actual show pages
 // Should it be done thro
 router.get('/:id(\\d+)/events', asyncHandler(async (req, res, next) => {
-    const events = await db.Event.findAll({where: { venueId: req.params.id }});
+    const events = await db.Event.findAll({where: { 
+        venueId: req.params.id 
+        },
+        order: [
+            ['date', 'ASC'],
+            ['startTime', 'ASC']
+            ]
+    });
     return res.json(events)
 }))
 
