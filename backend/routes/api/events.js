@@ -24,7 +24,23 @@ router.get('/:id(\\d+)/rsvps', asyncHandler(async (req, res, next) => {
 }));
 
 router.get('/homepageten', asyncHandler(async (req, res, next) => {
-    const events = await db.Event.findall({offset: 3})
+    console.log('test')
+    const events = await db.Event.findAll({ 
+        order: [
+            ['date', 'ASC'],
+            ['startTime', 'ASC']
+            ],
+            limit: 3, include: db.Venue
+            })
+    return res.json(events)
+}));
+
+router.get('/rsvps/:id(\\d+)', asyncHandler(async (req, res, next) => {
+    const events = await db.RSVP.findAll({
+        where: {
+            userId: req.params.id
+        },        
+    })
     return res.json(events)
 }))
 
