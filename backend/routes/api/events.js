@@ -24,7 +24,6 @@ router.get('/:id(\\d+)/rsvps', asyncHandler(async (req, res, next) => {
 }));
 
 router.get('/homepageten', asyncHandler(async (req, res, next) => {
-    console.log('test')
     const events = await db.Event.findAll({ 
         order: [
             ['date', 'ASC'],
@@ -42,6 +41,6 @@ router.get('/rsvps/:id(\\d+)', asyncHandler(async (req, res, next) => {
         }, include: db.Event      
     })
     return res.json(events)
-}))
+}));
 
 module.exports = router;

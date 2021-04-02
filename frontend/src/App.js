@@ -7,7 +7,8 @@ import Navigation from './components/Navigation';
 import VenueDisplay from './components/Venue';
 import CreateEventForm from './components/CreateEventForm';
 import EventDisplay from './components/Event';
-import HomePage from './components/HomePage'
+import HomePage from './components/HomePage';
+import AllEvents from './components/AllUpComingEvents'
 import * as sessionsActions from './store/session';
 
 function App() {
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path='/events/:eventId'>
             <EventDisplay />
+          </Route>
+          <Route path='/search/all'>
+            <AllEvents />
           </Route>
           <Route>
             <h2>Nothing found here</h2>
