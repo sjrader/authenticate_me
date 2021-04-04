@@ -63,7 +63,7 @@ const VenueDisplay = () => {
                 <a href={`/events/${event.id}`}>{event.title}</a>
                     <div>
                         <h3>{event.date}</h3>
-                        <h3>From {event.startTime} - {event.endTime}</h3>
+                        <h3>Starting at {event.startTime}</h3>
                     </div>
                 </div>
             ))}

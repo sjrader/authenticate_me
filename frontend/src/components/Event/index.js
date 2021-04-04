@@ -35,25 +35,28 @@ const EventDisplay = () => {
             userId,
             attendStatus
         } 
-        if (!eventRsvps.map(eventRsvp => eventRsvp.userId).includes(userId)) {
             try {
                 const res = await csrfFetch(`/api/events/${eventId}`, {
                     method: 'POST',
                     body: JSON.stringify(rsvp),
                     headers: {
                         "Content-Type": "application/json"
-                    }})
+                    }
+                    }   
+                    )
+                if (res.ok) {
+                    const attendStatus = await res.json();
+                    setAttendStatus(attendStatus)
+                }
             } catch (err) {
                 console.log(err)
             }
-        } else if (eventRsvps.map(eventRsvp => eventRsvp.userId === userId)) {
-            console.log('Will be shocked if this is the right number ==> ')
-        }
     }
 
     useEffect( async() => {
         GetEvent();
         GetRsvps();
+            console.log(event.image)
     }, [eventId, setEventRsvps])
 
     const buttonText = sessionUser ? 'RSVP!' : 'Sign up to RSVP!'
@@ -63,9 +66,9 @@ const EventDisplay = () => {
         <div>
             <h2>{event.title}</h2>
             <h3>{event.date}</h3>
-            <h3>From {event.startTime} until {event.endTime}</h3>
+            <h3>Starting at {event.startTime} until {event.endTime}</h3>
             {/* Need to make this look better when there is more time */}
-        < img src={event.image}/>
+        <img src={event.image} />
         <div>
             <form onSubmit={onSubmitRSVP}>
             <select

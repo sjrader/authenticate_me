@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { csrfFetch } from '../../store/csrf';
+import '../HomePage/HomePage.css';
 
 const AllEvents = () => {
     const [allEvents, setAllEvents] = useState([]);

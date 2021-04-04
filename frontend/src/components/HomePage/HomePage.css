@@ -1,0 +1,37 @@
+.event-card {
+    flex-direction: row;
+    display: flex;
+    text-align: center;
+    
+}
+
+.upcoming-individual {
+    background-color: green;
+    width: 300px;
+    height: stretch;
+    padding: 0px 0px 10px 0px;
+    /* justify-content: center; */
+    border-radius: 5px;
+    margin: 10px;
+    border: 2px solid #808080;
+    background-color: #FFFAF0;
+}
+.upcoming-individual a{
+    text-decoration: none;
+}
+
+.card-title {
+    font-size: 25px;
+    background-color: #404040;
+    margin: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.card-image{
+    max-height: 200px;
+    width: auto;
+    object-fit: contain;
+    margin: 5px;
+}

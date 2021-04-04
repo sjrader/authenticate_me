@@ -1,12 +1,14 @@
-import React from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink, useHistory} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import { csrfFetch } from '../../store/csrf';
 import './Navigation.css';
 //later on import Font Awesome
 
 function Navigation({ isLoaded }) {
     const history = useHistory();
+    const [searchTitles, setSearchTitles] = useState('')
     const sessionUser = useSelector(state => state.session.user);
 
     let sessionLinks;
@@ -25,23 +27,37 @@ function Navigation({ isLoaded }) {
 
     const onSearch = async(e) => {
         e.preventDefault();
-        history.push('/venues/1')
+        console.log('search title => ', searchTitles)
+        const res = await csrfFetch('/api/search/');
+        const events = await res.json();
+        console.log(events)
     }
 
     return (
-        <div>
-        <ul>
-            <li>
-                <NavLink exact to="/">Home</NavLink>
-                {isLoaded && sessionLinks}
-            </li>
-        </ul>
-        <div>
+        <div className="nav-div">
+            <div className="kickoff">
+                <NavLink className="kickoff-header" exact to="/">KickOff</NavLink>
+            </div>
+            <div>
+                <NavLink to='/search/all'>
+                    <button type='submit'>See all upcoming events!</button>
+                </NavLink>
+            </div>
+            <div>
             <form onSubmit={onSearch}>
-                <input placeholder='Search for events'></input>
-                <button type="submit">Search K/O</button>
+                <input
+                className="search-bar" 
+                    value={searchTitles}
+                    onChange={(e) => setSearchTitles(e.target.value)} 
+                    placeholder='Search for a team name'
+                    ></input>           
+                <button
+                className="kevin-owens-search" 
+                type="submit"
+                >Search K/O</button>
             </form>
-        </div>
+            </div>
+            {isLoaded && sessionLinks}
         </div>
     );
 }

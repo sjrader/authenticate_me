@@ -1,0 +1,46 @@
+.nav-div {
+    height: 90px;
+    background-color: #FFFAF0;
+    border: 2px solid #808080;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.kickoff-header {
+    display: flex;
+    color: black;
+    font-size: 30px;
+    font-family: Impact; 
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+}
+.kickoff {
+    display: flex;
+    width: 110px;
+    height: 50px;
+    /* background-color: white; */
+}
+
+.search-bar {
+    width: 155px;
+    border-radius: 3px;
+    margin: 3px;
+}
+
+.kevin-owens-search {
+    margin: 3px;
+    border-radius: 2px;
+}
+.profile-dropdown {
+    font-size: 13px;
+    display: flex;
+    flex-direction: row;
+}
+
+.logout-button {
+    max-height: 20px;
+}
