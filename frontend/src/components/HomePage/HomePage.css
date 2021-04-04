@@ -2,11 +2,10 @@
     flex-direction: row;
     display: flex;
     text-align: center;
-    
+    height: 425px;
 }
 
 .upcoming-individual {
-    background-color: green;
     width: 300px;
     height: stretch;
     padding: 0px 0px 10px 0px;
@@ -32,6 +31,10 @@
 .card-image{
     max-height: 200px;
     width: auto;
-    object-fit: contain;
-    margin: 5px;
+    margin: 10px;
+    box-shadow: .5px .5px .5px .5px black;
+}
+
+.location-name {
+    text-decoration: none;
 }

@@ -23,9 +23,9 @@ const HomePage = () => {
 
     };
 
-    let sessionLinks;
+    let homeRender;
     if (sessionUser) {
-        sessionLinks = (
+        homeRender = (
         <>
             <div className="upcoming">
                     <h2>My next ten upcoming events:</h2>
@@ -61,7 +61,7 @@ const HomePage = () => {
         );
     } 
     else {
-        sessionLinks = (
+        homeRender = (
         <>
         <div className="upcoming">
             <h2>Next ten upcoming events on KickOff:</h2>
@@ -72,7 +72,7 @@ const HomePage = () => {
                         <div className="card-title">{event.title}</div>
                     </a>
                     <h4>On {event.date} starting at {event.startTime}</h4>
-                    <p href>{event.description}</p>
+                    <p>{event.description}</p>
                     <a className="location-name" href={`/venues/${event.venueId}`}>Located at {event.Venue.name}</a>
                  </div>
              ))}
@@ -92,7 +92,7 @@ const HomePage = () => {
         console.log(myEvents);
     return (
        <div>
-       {sessionLinks}
+       {homeRender}
        </div>
     )
 }

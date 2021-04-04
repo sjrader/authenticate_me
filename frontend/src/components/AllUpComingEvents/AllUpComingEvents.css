@@ -1,0 +1,21 @@
+.all-events-card {
+    flex-direction: row;
+    display: flex;
+    text-align: center;
+}
+.event-cards {
+    align-items: center;    
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+}
+
+.upcoming {
+    text-align: center;
+}
+
+.event-page-picture {
+    max-height: 250px;
+    width: auto;
+    margin: 10px;
+}

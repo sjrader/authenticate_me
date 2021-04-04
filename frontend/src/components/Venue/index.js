@@ -43,28 +43,34 @@ const VenueDisplay = () => {
 
     return (
     <div>
-        <img src={venue.image} alt={`${venue.name}`}/>
+    <div className="venue-page-div">
         <h2>{venue.name}</h2>
-            <a href={venue.website}>Website</a>
-        <h3>{venue.location}</h3>
+        <div className="venue-info">
+            <div className="venue-image">
+                <img src={venue.image} alt={`${venue.name}`}/>
+            </div>
+                <a href={venue.website}>Website</a>
+            <h3>{venue.location}</h3>
+            {/* Need to make sure these look better, they should not say true or false here
+            ultimately */}
+            <h4>MLB: {`${venue.mlb}`}</h4> 
+            <h4>NFL: {`${venue.nfl}`}</h4>
+            <h4>NBA: {`${venue.nba}`}</h4>
+            <h4>NHL: {`${venue.nhl}`}</h4>
+            <h4>NCAA: {`${venue.ncaa}`}</h4>
+        </div>
         <p>{venue.description}</p>
-        {/* Need to make sure these look better, they should not say true or false here
-        ultimately */}
-        <h4>MLB: {`${venue.mlb}`}</h4> 
-        <h4>NFL: {`${venue.nfl}`}</h4>
-        <h4>NBA: {`${venue.nba}`}</h4>
-        <h4>NHL: {`${venue.nhl}`}</h4>
-        <h4>NCAA: {`${venue.ncaa}`}</h4>
+    </div>
+    <div className="headline">
         <h3>Events:</h3>
             {linkChoice}
-        <div>
             {events.map(event => (
-                <div key={event.id}>
-                <a href={`/events/${event.id}`}>{event.title}</a>
-                    <div>
-                        <h3>{event.date}</h3>
-                        <h3>Starting at {event.startTime}</h3>
-                    </div>
+                <div className="event-listings" key={event.id}>
+                    <a href={`/events/${event.id}`}>{event.title}</a>
+                       <div>
+                           <h3>{event.date}</h3>
+                           <h3>Starting at {event.startTime}</h3>
+                       </div>
                 </div>
             ))}
         </div>

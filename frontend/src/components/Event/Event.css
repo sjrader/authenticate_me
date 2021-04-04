@@ -1,0 +1,18 @@
+.event-page-div {
+    width: 550px;
+    height: stretch;
+    border-radius: 5px;
+    margin: 10px;
+    border: 2px solid #808080;
+    background-color: #FFFAF0;
+}
+
+.event-page-title {
+    text-align: center;
+}
+
+.event-page-top {
+    display: flex;
+    padding: 5px;
+}
+

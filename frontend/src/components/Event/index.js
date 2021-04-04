@@ -63,37 +63,37 @@ const EventDisplay = () => {
 
         // Page seems to be loaded 3 times instead of a single. Need to ask about this, but the render is looking fine.
     return (
-        <div>
-            <h2>{event.title}</h2>
-            <h3>{event.date}</h3>
-            <h3>Starting at {event.startTime} until {event.endTime}</h3>
-            {/* Need to make this look better when there is more time */}
-        <img src={event.image} />
-        <div>
-            <form onSubmit={onSubmitRSVP}>
-            <select
-                value={attendStatus}
-                onChange={(e) => setAttendStatus(e.target.value)}
-                >
-                <option value={'null'}>Want to attend?</option>
-                <option value={'attending'}>I am Attending</option>
-                <option value={'notAttending'}>Will Not Be Attending</option>
-                <option value={'maybeAttending'}>Maybe Attending?</option>
-            </select>
-            <button disabled={!sessionUser} type="submit" onSubmit={onSubmitRSVP}>{buttonText}</button>
-            </form>
-        </div> 
-        <div> 
-            <label>
-                <h2>Location:</h2>
-                <a href={`/venues/${event.venueId}`}>{venue.name}</a>
-                <h4>{venue.location}</h4>
-            </label>
-        </div>
-            <p>{event.description}</p>
-        <div>
-
-        </div>
+        <div className="event-page-div">
+            <h2 className="event-page-title">{event.title}</h2>
+            <div className="event-page-top">
+                <img className="event-page-picture" src={event.image} />
+                    <div className="attendance-div">
+                        <h3 className="event-page-date">{event.date}</h3>
+                        <h3 className="event-page-time">Starting at {event.startTime} until {event.endTime}</h3>
+                        {/* Need to make this look better when there is more time */}
+            <div className="event-page-location"> 
+                    <h4>Location: <a href={`/venues/${event.venueId}`}>{venue.name}</a></h4>
+                    <h4>{venue.location}</h4>
+            </div> 
+                <div>
+                    <form onSubmit={onSubmitRSVP}>
+                    <select
+                        value={attendStatus}
+                        onChange={(e) => setAttendStatus(e.target.value)}
+                        >
+                        <option value={'null'}>Want to attend?</option>
+                        <option value={'attending'}>I am Attending</option>
+                        <option value={'notAttending'}>Will Not Be Attending</option>
+                        <option value={'maybeAttending'}>Maybe Attending?</option>
+                    </select>
+                    <button disabled={!sessionUser} type="submit" onSubmit={onSubmitRSVP}>{buttonText}</button>
+                    </form>
+                </div>
+            </div>
+            </div>
+            <div>
+                <p className="event-page-description">{event.description}</p>
+            </div>
         </div>
     )
 
