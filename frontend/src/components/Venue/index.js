@@ -40,24 +40,28 @@ const VenueDisplay = () => {
         GetVenueEvents()
     }, [venueId])
 
+    const mlbChoice = venue.mlb ? 'MLB Package' : '';
+    const ncaaChoice = venue.ncaa ? 'NCAA' : '';
 
     return (
     <div>
     <div className="venue-page-div">
         <h2>{venue.name}</h2>
         <div className="venue-info">
-            <div className="venue-image">
-                <img src={venue.image} alt={`${venue.name}`}/>
+            <div >
+                <img className="bar-image" src={venue.image} alt={`${venue.name}`}/>
             </div>
-                <a href={venue.website}>Website</a>
+            <div>
+            <a href={venue.website}>Website</a>
             <h3>{venue.location}</h3>
             {/* Need to make sure these look better, they should not say true or false here
             ultimately */}
-            <h4>MLB: {`${venue.mlb}`}</h4> 
+            <h4>{mlbChoice}</h4> 
             <h4>NFL: {`${venue.nfl}`}</h4>
             <h4>NBA: {`${venue.nba}`}</h4>
             <h4>NHL: {`${venue.nhl}`}</h4>
-            <h4>NCAA: {`${venue.ncaa}`}</h4>
+            <h4>{ncaaChoice}</h4>
+            </div>
         </div>
         <p>{venue.description}</p>
     </div>
