@@ -1,11 +1,20 @@
+.whole-render {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .venue-page-div {
-    width: 550px;
+    width: 600px;
     height: stretch;
     border-radius: 5px;
     margin: 10px;
     border: 2px solid #808080;
-    background-color: #FFFAF0; 
+    background-color: #FFFAF0;
 
+}
+.venue-name, .venue-website, .venue-location {
+    padding: 0px 0px 0px 10px;
 }
 
 .event-listings {
@@ -13,12 +22,10 @@
     justify-content: center;
 }
 
-.venue-info {
+.venue-card {
     display: flex;
 }
-.headline {
-    text-align: center;
-}
+
 
 .event-page-description {
     text-align: center;
@@ -26,7 +33,20 @@
 }
 
 .bar-image {
-    max-height: 250px;
+    max-height: 320px;
     width: auto;
     margin: 10px;
+}
+.venue-options {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.league-logo {
+    display: flex;
+    align-self: center;
+    max-height: auto;
+    max-width: 50px;
+    margin: 5px;
 }

@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import {  useSelector } from 'react-redux';
 import { csrfFetch } from '../../store/csrf';
+import mlbLogo from '../../Images/mlb-logo.jpg';
+import nhlLogo from '../../Images/NHL-logo.jpg'
+import nflLogo from '../../Images/nfl-logo.jpg';
+import nbaLogo from '../../Images/nba-logo.jpg';
+import ncaaLogo from '../../Images/ncaa-logo.jpg';
 import './VenuePage.css';
 // May want to set up some redux shops for events, but I don't think that 
 // it will be needed for venues, since they are relatively simple
@@ -30,6 +35,11 @@ const VenueDisplay = () => {
     const sessionLink = <a className="linkChoice" href={`/venues/${venue.id}/create`}>Don't see an event you were looking for? Create one here!</a>
     const signUpLink = <a className="linkChoice" href={`/signup`}>Want to create an event? Sign up for an account here!</a>
     const linkChoice = sessionUser ? sessionLink : signUpLink
+    const mlbChoice = venue.mlb ? mlbLogo : '';
+    const nflChoice = venue.nfl ? nflLogo: '';
+    const nbaChoice = venue.nba ? nbaLogo : '';
+    const nhlChoice = venue.nhl ? nhlLogo : '';
+    const ncaaChoice = venue.ncaa ? ncaaLogo : '';
 
 
     useEffect(() => {
@@ -40,45 +50,42 @@ const VenueDisplay = () => {
         GetVenueEvents()
     }, [venueId])
 
-    const mlbChoice = venue.mlb ? 'MLB Package' : '';
-    const ncaaChoice = venue.ncaa ? 'NCAA' : '';
 
     return (
-    <div>
-    <div className="venue-page-div">
-        <h2>{venue.name}</h2>
-        <div className="venue-info">
-            <div >
-                <img className="bar-image" src={venue.image} alt={`${venue.name}`}/>
-            </div>
-            <div>
-            <a href={venue.website}>Website</a>
-            <h3>{venue.location}</h3>
-            {/* Need to make sure these look better, they should not say true or false here
-            ultimately */}
-            <h4>{mlbChoice}</h4> 
-            <h4>NFL: {`${venue.nfl}`}</h4>
-            <h4>NBA: {`${venue.nba}`}</h4>
-            <h4>NHL: {`${venue.nhl}`}</h4>
-            <h4>{ncaaChoice}</h4>
-            </div>
-        </div>
-        <p>{venue.description}</p>
-    </div>
-    <div className="headline">
-        <h3>Events:</h3>
-            {linkChoice}
-            {events.map(event => (
-                <div className="event-listings" key={event.id}>
-                    <a href={`/events/${event.id}`}>{event.title}</a>
-                       <div>
-                           <h3>{event.date}</h3>
-                           <h3>Starting at {event.startTime}</h3>
-                       </div>
+        <div className="whole-render">
+            <div className="venue-page-div">
+                <h2 className="venue-name">{venue.name} </h2>
+                <a className="venue-website" href={venue.website}>Website</a>
+                <h4 className="venue-location">{venue.location}</h4>
+                <div className="venue-card">
+                    <div >
+                        <img className="bar-image" src={venue.image} alt={`${venue.name}`}/>
+                    </div>
+                    <div className="venue-options">
+                        <h4>Sports shown here:</h4>
+                        <img className="league-logo" src={mlbChoice}/>
+                        <img className="league-logo" src={nflChoice} />
+                        <img className="league-logo" src={nbaChoice} />
+                        <img className="league-logo" src={nhlChoice} />
+                        <img className="league-logo" src={ncaaChoice} />
+                    </div>
                 </div>
-            ))}
+                <p>{venue.description}</p>
+            </div>
+            <div className="headline">
+                <h3>Events:</h3>
+                    {linkChoice}
+                    {events.map(event => (
+                        <div className="event-listings" key={event.id}>
+                            <a href={`/events/${event.id}`}>{event.title}</a>
+                               <div>
+                                   <h3>{event.date}</h3>
+                                   <h3>Starting at {event.startTime}</h3>
+                               </div>
+                        </div>
+                    ))}
+            </div>
         </div>
-    </div>
     )
 };
 
