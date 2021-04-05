@@ -1,0 +1,25 @@
+.all-venues {
+    text-align: center;
+}
+.venue-cards {
+    align-items: center;    
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+}
+
+.individual-venue {
+    width: 600px;
+    height: stretch;
+    padding: 0px 0px 10px 0px;
+    border-radius: 5px;
+    margin: 10px;
+    border: 2px solid #808080;
+    background-color: #FFFAF0;
+}
+
+.venue-card-image {
+    max-height: 250px;
+    width: auto;
+    margin: 10px;
+}

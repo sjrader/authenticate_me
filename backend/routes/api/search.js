@@ -19,4 +19,9 @@ router.get('/', asyncHandler(async (req, res, next) => {
     return res.json(events)
 }));
 
+router.get('/venues', asyncHandler(async (req, res, next) => {
+    const venues = await db.Venue.findAll()
+    return res.json(venues)
+}));
+
 module.exports = router;
