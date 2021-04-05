@@ -68,98 +68,105 @@ function CreateEventForm() {
   };
 
     return (
-        <form className="event-form" onSubmit={onSubmit}>
-        <a href={`/venues/${venueId}`}>Return to previous page</a>
-        <h2>Create an Event</h2>
-            <ul className="errors">
-                {errors.map(error => (
-                    <li key={error}>{error}</li>
-        ))}
-      </ul>
-            <input
-                type="text"
-                name="title"
-                placeholder="Event Name"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                required
-            >
-            </input>
-            <div>
-                <label>
-                Select a sport
-                    <select
-                        value={sport}
-                        onChange={(e) => setSport(e.target.value)}
-                        >
-                        {SPORTS.map(sport => (
-                            <option
-                            key={sport}
-                            value={sport}
-                            required
-                            >
-                            {sport}
-                            </option>
-                        ))}
-                    </select>
-                </label>
-            </div>
-            <div>
-                <label>Date:
-                    <input 
-                        type="date"
-                        name="date"
-                        value={date}
-                        onChange={(e) => setDate(e.target.value)}
-                        required
-                    >
-                    </input>
-                </label>
-                <label>Start Time:
-                    <input 
-                        type="time"
-                        nam="startTime"
-                        value={startTime}
-                        onChange={(e) => setStartTime(e.target.value)}
-                        required                    
-                    >
-                    </input>
-                </label>
-                <label>End Time:
-                    <input 
-                        type="time"
-                        name="endTime"
-                        value={endTime}
-                        onChange={(e) => setEndTime(e.target.value)}
-                        required
-                    >
-                    </input>
-                </label>
-            </div>
-            <div>
-                <label>
-                </label>
-                <textarea
-                name="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Describe your event!"
-                required
-                ></textarea>
-            </div>
-            <div>
-                <input
-                type="text"
-                placeholder="Optional image URL"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-                >
-                </input>
-            </div>
-            <div>
-                <button disabled={!!errors.length} type="submit" className="submitForm">Create Event</button>
-            </div>
-        </form>
+        <div className="whole-form">
+          <a href={`/venues/${venueId}`}>Return to previous page</a>
+          <form className="event-form" onSubmit={onSubmit}>
+          <h2>Create an Event</h2>
+              <ul className="errors">
+                  {errors.map(error => (
+                      <li key={error}>{error}</li>
+          ))}
+        </ul>
+              <input
+                  type="text"
+                  name="title"
+                  className="create-event-title"
+                  placeholder="Event Name"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  required
+              >
+              </input>
+              <div>
+                  <label>
+                  Select a sport
+                      <select
+                          value={sport}
+                          onChange={(e) => setSport(e.target.value)}
+                          className="select-sport"
+                          >
+                          {SPORTS.map(sport => (
+                              <option
+                              key={sport}
+                              value={sport}
+                              required
+                              >
+                              {sport}
+                              </option>
+                          ))}
+                      </select>
+                  </label>
+              </div>
+                <div className="create-date">
+                  <label>Date:
+                      <input 
+                          type="date"
+                          name="date"
+                          value={date}
+                          onChange={(e) => setDate(e.target.value)}
+                          required
+                      >
+                      </input>
+                  </label>
+                  </div>
+                  <div className="create-time">
+                  <label>   Start Time:
+                      <input 
+                          type="time"
+                          nam="startTime"
+                          value={startTime}
+                          onChange={(e) => setStartTime(e.target.value)}
+                          required                    
+                      >
+                      </input>
+                  </label>
+                  <label>    End Time:
+                      <input 
+                          type="time"
+                          name="endTime"
+                          value={endTime}
+                          onChange={(e) => setEndTime(e.target.value)}
+                          required
+                      >
+                      </input>
+                  </label>
+                  </div>
+              <div className="create-description">
+                  <label>
+                  </label>
+                  <textarea
+                  name="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Describe your event!"
+                  required
+                  ></textarea>
+              </div>
+              <div className="create-image">
+                  <input
+                  type="text"
+                  placeholder="Enter image URL"
+                  value={image}
+                  onChange={(e) => setImage(e.target.value)}
+                  required
+                  >
+                  </input>
+              </div>
+              <div>
+                  <button disabled={!!errors.length} type="submit" className="submitForm">Create Event</button>
+              </div>
+          </form>
+    </div>
     )
 
 };

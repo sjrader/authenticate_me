@@ -5,6 +5,7 @@
     margin: 10px;
     border: 2px solid #808080;
     background-color: #FFFAF0;
+    align-self: center;
 }
 
 .event-page-title {

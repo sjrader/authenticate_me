@@ -1,3 +1,5 @@
+
+
 .nav-div {
     height: 90px;
     background-color: #FFFAF0;
@@ -6,6 +8,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    text-decoration: none;
 }
 
 .kickoff-header {

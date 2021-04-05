@@ -1,0 +1,15 @@
+.event-form {
+    width: 600px;
+    height: stretch;
+    border-radius: 5px;
+    margin: 25px;
+    border: 2px solid #808080;
+    background-color: #FFFAF0;
+    text-align: center;
+}
+
+.create-event-title, .select-sport, .create-date, 
+.create-time, .create-description, .create-image, .submitForm
+{
+    margin: 10px;
+}

@@ -8,13 +8,17 @@
     width: 600px;
     height: stretch;
     border-radius: 5px;
-    margin: 10px;
+    margin: 25px;
     border: 2px solid #808080;
     background-color: #FFFAF0;
 
 }
 .venue-name, .venue-website, .venue-location {
     padding: 0px 0px 0px 10px;
+}
+
+.venue-description {
+    margin: 10px;
 }
 
 .event-listings {
@@ -49,4 +53,26 @@
     max-height: auto;
     max-width: 50px;
     margin: 5px;
+}
+
+.venue-event-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    /* height: 425px; */
+}
+
+.upcoming-individual-event {
+    width: 450px;
+    height: stretch;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 10px;
+    border: 2px solid #808080;
+    background-color: #FFFAF0;
+}
+.upcoming-individual-event a{
+    text-decoration: none;
 }

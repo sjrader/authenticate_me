@@ -1,0 +1,5 @@
+.signup-submit, .signup-confirm, .signup-password,
+.signup-username, .signup-email
+ {
+    margin: 5px;
+}

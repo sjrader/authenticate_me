@@ -1,0 +1,13 @@
+.login-form {
+    width: 300px;
+    height: stretch;
+    border-radius: 5px;
+    margin: 25px;
+    border: 2px solid #808080;
+    background-color: #FFFAF0;
+}
+
+.login-username, .login-password, .login-button {
+    margin: 10px;
+}
+

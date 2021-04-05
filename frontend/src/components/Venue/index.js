@@ -7,7 +7,9 @@ import nhlLogo from '../../Images/NHL-logo.jpg'
 import nflLogo from '../../Images/nfl-logo.jpg';
 import nbaLogo from '../../Images/nba-logo.jpg';
 import ncaaLogo from '../../Images/ncaa-logo.jpg';
+import { formatDate, formatTime } from '../../store/date-time';
 import './VenuePage.css';
+
 // May want to set up some redux shops for events, but I don't think that 
 // it will be needed for venues, since they are relatively simple
 
@@ -30,7 +32,7 @@ const VenueDisplay = () => {
         const res = await csrfFetch(`/api/venues/${venueId}/events`)
         const venueEvents = await res.json();
         setEvents(venueEvents);
-    }
+    };
 
     const sessionLink = <a className="linkChoice" href={`/venues/${venue.id}/create`}>Don't see an event you were looking for? Create one here!</a>
     const signUpLink = <a className="linkChoice" href={`/signup`}>Want to create an event? Sign up for an account here!</a>
@@ -70,20 +72,28 @@ const VenueDisplay = () => {
                         <img className="league-logo" src={ncaaChoice} />
                     </div>
                 </div>
-                <p>{venue.description}</p>
+                <p className="venue-description">{venue.description}</p>
             </div>
-            <div className="headline">
-                <h3>Events:</h3>
+            <div>
+                <div className="event-headline">
+                    <h3>Upcoming Events at {venue.name}:</h3>
                     {linkChoice}
+                </div>
+                <div className="venue-event-card">
                     {events.map(event => (
-                        <div className="event-listings" key={event.id}>
-                            <a href={`/events/${event.id}`}>{event.title}</a>
+                        <div className="upcoming-individual-event" key={event.id}>
+                            <img className="card-image" src={event.image} />
+                            <a href={`/events/${event.id}`}>
+                            <div className="card-title">{event.title}</div>
+                            </a>
                                <div>
-                                   <h3>{event.date}</h3>
-                                   <h3>Starting at {event.startTime}</h3>
+                                   <h3>{formatDate(event.date)}</h3>
+                                   <h3>From {formatTime(event.startTime)} until {formatTime(event.endTime)}</h3>
+                                   <p>{event.description}</p>
                                </div>
                         </div>
                     ))}
+                </div>
             </div>
         </div>
     )

@@ -1,1 +1,11 @@
 /* TODO Add site wide styles */
+
+.whole-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding:10px;
+}
+* {
+    font-family: helvetica;
+}

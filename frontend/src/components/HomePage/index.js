@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { csrfFetch } from '../../store/csrf';
+import { formatDate, formatTime } from '../../store/date-time'
 import './HomePage.css';
 
 const HomePage = () => {
@@ -28,7 +29,7 @@ const HomePage = () => {
         homeRender = (
         <>
             <div className="upcoming">
-                    <h2>My next ten upcoming events:</h2>
+                    <h2>My upcoming events:</h2>
                     <div className="event-card">
                         {myEvents.map(event => (
                              <div className="upcoming-individual" key={event.id}>
@@ -36,7 +37,7 @@ const HomePage = () => {
                                 <a href={`/events/${event.Event.id}`}>
                                     <div className="card-title">{event.Event.title}</div>
                                 </a>
-                                <h4>On {event.Event.date} starting at {event.Event.startTime}</h4>
+                                <h4>On {formatDate(event.Event.date)} starting at {formatTime(event.Event.startTime)}</h4>
                                 <a href={`/venues/${event.Event.venueId}`}>Venue information </a>
                              </div>
                           ))}
@@ -51,7 +52,7 @@ const HomePage = () => {
                     <a href={`/events/${event.id}`}>
                         <div className="card-title">{event.title}</div>
                     </a>
-                    <h4>On {event.date} starting at {event.startTime}</h4>
+                    <h4>On {formatDate(event.date)} starting at {formatTime(event.startTime)}</h4>
                     <a className="location-name" href={`/venues/${event.venueId}`}>Located at {event.Venue.name}</a>
                  </div>
              ))}
@@ -68,11 +69,11 @@ const HomePage = () => {
             <div className="event-card">
              {tenEvents.map(event => (
                  <div className="upcoming-individual" key={event.id}>
+                    <img className="card-image" src={event.image} />
                     <a href={`/events/${event.id}`}>
                         <div className="card-title">{event.title}</div>
                     </a>
                     <h4>On {event.date} starting at {event.startTime}</h4>
-                    <p>{event.description}</p>
                     <a className="location-name" href={`/venues/${event.venueId}`}>Located at {event.Venue.name}</a>
                  </div>
              ))}
