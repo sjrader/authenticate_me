@@ -25,6 +25,16 @@ function LoginFormPage() {
                 if (data && data.errors) setErrors(data.errors);
             });
     };
+
+    const handleDemoSubmit = e => {
+        e.preventDefault();
+        setCredential('DemoLogin');
+        setPassword('password');
+        return dispatch(sessionsActions.login({ credential, password }))
+            .catch(async (res) => {
+                const data = await res.json();
+            });
+    }
     
     return (
         <div className="whole-form">
@@ -55,6 +65,9 @@ function LoginFormPage() {
         </label>
         </div>
         <button className="login-button" type="submit">Log in</button>
+        </form>
+        <form onSubmit={handleDemoSubmit}>
+        <button className="demo-login-button" type="submit">Demo Log in</button>
         </form>
     </div>
     );

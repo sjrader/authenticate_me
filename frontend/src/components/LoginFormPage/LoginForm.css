@@ -11,3 +11,11 @@
     margin: 10px;
 }
 
+.demo-login-button {
+    width: 100px;
+    height: stretch;
+    border-radius: 5px;
+    margin: 25px;
+    border: 2px solid #808080;
+    background-color: #FFFAF0;
+}
