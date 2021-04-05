@@ -29,7 +29,7 @@ const AllVenues = () => {
                         <a href={`/venues/${venue.id}`}>
                             <div className="card-title">{venue.name}</div>
                         </a>
-                        <h4 className="location-name">Located at {venue.location}</h4>
+                        <h4 className="location-name">{venue.location}</h4>
                         <p className="venue-description">{venue.description}</p>
                     </div>
             ))}

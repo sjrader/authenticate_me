@@ -12,6 +12,7 @@ const AllEvents = () => {
         setAllEvents(foundEvents);
     }
 
+
     useEffect(() => {
         GetAllEvents();
     }, [setAllEvents])
