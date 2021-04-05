@@ -41,7 +41,7 @@ router.get('/homepageten', asyncHandler(async (req, res, next) => {
             ['date', 'ASC'],
             ['startTime', 'ASC']
             ],
-            limit: 10, include: db.Venue
+            limit: 5, include: db.Venue
             })
     return res.json(events)
 }));

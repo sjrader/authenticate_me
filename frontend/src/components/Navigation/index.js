@@ -40,9 +40,15 @@ function Navigation({ isLoaded }) {
             </div>
             <div>
                 <NavLink to='/search/all'>
-                    <button type='submit'>See all upcoming events!</button>
+                    <button type='submit'>See all upcoming events</button>
                 </NavLink>
             </div>
+            <div>
+                <NavLink to='/search/venues'>
+                    <button type='submit'>Search local bars</button>
+                </NavLink>
+            </div>
+            {/* Will come back and finish the search bar at another time
             <div>
             <form onSubmit={onSearch}>
                 <input
@@ -56,7 +62,7 @@ function Navigation({ isLoaded }) {
                 type="submit"
                 >Search K/O</button>
             </form>
-            </div>
+            </div> */}
             {isLoaded && sessionLinks}
         </div>
     );

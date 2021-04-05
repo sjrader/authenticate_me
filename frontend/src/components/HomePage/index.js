@@ -44,7 +44,7 @@ const HomePage = () => {
                     </div>
              </div> 
         <div className="upcoming">
-            <h2>Next ten upcoming events on KickOff:</h2>
+            <h2>Next five upcoming events on KickOff:</h2>
             <div className="event-card">
              {tenEvents.map(event => (
                  <div className="upcoming-individual" key={event.id}>
@@ -65,7 +65,7 @@ const HomePage = () => {
         homeRender = (
         <>
         <div className="upcoming">
-            <h2>Next ten upcoming events on KickOff:</h2>
+            <h2>Next five upcoming events on KickOff:</h2>
             <div className="event-card">
              {tenEvents.map(event => (
                  <div className="upcoming-individual" key={event.id}>
