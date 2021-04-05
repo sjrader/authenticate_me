@@ -73,7 +73,7 @@ const HomePage = () => {
                     <a href={`/events/${event.id}`}>
                         <div className="card-title">{event.title}</div>
                     </a>
-                    <h4>On {event.date} starting at {event.startTime}</h4>
+                    <h4>On {formatDate(event.date)} starting at {formatTime(event.startTime)}</h4>
                     <a className="location-name" href={`/venues/${event.venueId}`}>Located at {event.Venue.name}</a>
                  </div>
              ))}

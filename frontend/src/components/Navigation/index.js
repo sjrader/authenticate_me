@@ -40,12 +40,12 @@ function Navigation({ isLoaded }) {
             </div>
             <div>
                 <NavLink to='/search/all'>
-                    <button type='submit'>See all upcoming events</button>
+                    <button className="navButton" type='submit'>See all upcoming events</button>
                 </NavLink>
             </div>
             <div>
                 <NavLink to='/search/venues'>
-                    <button type='submit'>Search local bars</button>
+                    <button className="navButton" type='submit'>Find local bars</button>
                 </NavLink>
             </div>
             {/* Will come back and finish the search bar at another time

@@ -47,3 +47,8 @@
 .logout-button {
     max-height: 20px;
 }
+
+.navButton {
+    background-color: black;
+    color: white;
+}
